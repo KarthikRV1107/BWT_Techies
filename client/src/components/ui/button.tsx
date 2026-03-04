@@ -1,5 +1,26 @@
 import * as React from 'react'
-import { cva, type VariantProps } from 'class-variance-authority'
+// Minimal shim for class-variance-authority
+type VariantConfig = {
+  variants?: Record<string, Record<string, string>>
+  defaultVariants?: Record<string, string>
+}
+
+type VariantProps<T> = T extends { variants: infer V; defaultVariants: infer D }
+  ? { [K in keyof V]?: keyof V[K] } & { [K in keyof D]?: D[K] }
+  : never
+
+function cva(base: string, config?: VariantConfig) {
+  return (props?: Record<string, string | undefined>) => {
+    const classes = [base]
+    if (config?.variants && props) {
+      for (const [key, value] of Object.entries(props)) {
+        const variantClass = config.variants[key]?.[value || '']
+        if (variantClass) classes.push(variantClass)
+      }
+    }
+    return classes.join(' ')
+  }
+}
 import { cn } from '../../utils/cn'
 
 const buttonVariants = cva(
@@ -29,6 +50,8 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
   asChild?: boolean
 }
 
