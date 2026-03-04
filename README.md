@@ -1,74 +1,73 @@
-# DevResume AI – Context Recovery Engine for Developers
+# Welcome to your Lovable project
 
-Problem: Developers don’t lose productivity because they lack skill. They lose it because they lose context. DevResume AI restores context instantly and tells you exactly where to continue—clean, sharp, strong.
+## Project info
 
-## Key Features
-- Paste unfinished code and analyze instantly
-- Goal inference from code structure
-- Current state summary with completeness signals
-- Level-based explanation (Beginner / Intermediate / Advanced)
-- Next steps (prioritized)
-- Momentum Score (completion % and effort)
-- Risks / Improvements surfaced automatically
+**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-## Architecture
-```
-BWT_Techies/
-├── app/            # FastAPI backend
-│   └── main.py     # /analyze -> structured JSON
-├── static/         # Single-file frontend
-│   └── index.html  # HTML/CSS/JS + Three.js background (CDN)
-├── requirements.txt
-└── README.md
-```
+## How can I edit this code?
 
-### Data Flow
-- Frontend POST /analyze with { code, level }
-- Backend builds strict-JSON prompt and calls LLM (if key present)
-- If no LLM key, backend uses local analyzer fallback
-- Frontend renders structured JSON into result cards
+There are several ways of editing your application.
 
-## Tech Stack
-- Frontend: HTML + CSS + Vanilla JS, Three.js (CDN) for subtle 3D background
-- Backend: Python + FastAPI
-- LLM: OpenAI (via structured prompt, strict JSON)
+**Use Lovable**
 
-## Setup
-1. Install Python deps
-   ```
-   pip install -r requirements.txt
-   ```
-2. Run backend
-   ```
-   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-   ```
-3. Open frontend
-   - Double-click `static/index.html` or serve as static file
-   - Ensure it can reach `http://localhost:8000/analyze`
+Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
-### Environment (optional)
-```
-LLM_API_URL=https://api.openai.com/v1/chat/completions
-LLM_API_KEY=sk-...
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
 ```
 
-## LLM Prompt (strict JSON)
-Backend requests:
-- Keys: goal, current_state, explanation, next_steps[], momentum{completion, effort}, risks[]
-- constraints: completion int 0–100; effort in Low/Medium/High
+**Edit a file directly in GitHub**
 
-## Future Scope
-- Projects workspace and grouping
-- OAuth login and multi-tenant teams
-- Export PDF/Markdown server-side
-- Advanced scoring with domain-specific heuristics
-- IDE plugin and PR analysis
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-## Architecture Diagram Layout
-- Browser: Single-page app renders UI and 3D background
-- Frontend -> Backend: POST /analyze
-- Backend:
-  - If LLM key: Calls OpenAI with strict JSON prompt
-  - Else: Local analyzer computes signals (TODO/pass/def/class/etc.)
-  - Returns structured JSON
-- Frontend: Updates result cards, Momentum Score, and Risks with animation
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
