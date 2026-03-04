@@ -11,7 +11,7 @@ export default function Dashboard() {
     if (!code.trim()) return
     setLoading(true)
     try {
-      const data = await analyzeCode({ code, level })
+      const data = await analyzeCode({ code })
       setResult(data)
       await saveAnalysis({ code, level, result: JSON.stringify(data, null, 2) })
     } catch (err) {
@@ -49,32 +49,36 @@ export default function Dashboard() {
           {result ? (
             <div className="results-grid">
               <div>
-                <h3 className="mini-title">GOAL</h3>
-                <p className="muted">{result.goal}</p>
+                <h3 className="mini-title">LANGUAGE</h3>
+                <p className="muted">{result.language}</p>
               </div>
               <div>
-                <h3 className="mini-title">CURRENT STATE</h3>
-                <p className="muted">{result.current_state}</p>
-              </div>
-              <div>
-                <h3 className="mini-title">EXPLANATION</h3>
-                <p className="muted">{result.explanation}</p>
-              </div>
-              <div>
-                <h3 className="mini-title">NEXT STEPS</h3>
+                <h3 className="mini-title">WARNINGS</h3>
                 <ul className="muted">
-                  {(result.next_steps || []).map((s: string, i: number) => <li key={i}>{s}</li>)}
+                  {(result.warnings || []).map((s: string, i: number) => <li key={i}>{s}</li>)}
                 </ul>
               </div>
               <div>
-                <h3 className="mini-title">MOMENTUM SCORE</h3>
-                <p className="muted">Completion: {result.momentum?.completion}% • Effort: {result.momentum?.effort}</p>
+                <h3 className="mini-title">SUGGESTIONS</h3>
+                <ul className="muted">
+                  {(result.suggestions || []).map((s: string, i: number) => <li key={i}>{s}</li>)}
+                </ul>
               </div>
               <div>
-                <h3 className="mini-title">RISKS / IMPROVEMENTS</h3>
+                <h3 className="mini-title">INCOMPLETE BLOCKS</h3>
                 <ul className="muted">
-                  {(result.risks || []).map((s: string, i: number) => <li key={i}>{s}</li>)}
+                  {(result.incomplete_blocks || []).map((s: string, i: number) => <li key={i}>{s}</li>)}
                 </ul>
+              </div>
+              <div>
+                <h3 className="mini-title">RISK FLAGS</h3>
+                <ul className="muted">
+                  {(result.risk_flags || []).map((s: string, i: number) => <li key={i}>{s}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3 className="mini-title">CONFIDENCE</h3>
+                <p className="muted">{Math.round((result.confidence_score || 0) * 100)}%</p>
               </div>
             </div>
           ) : (

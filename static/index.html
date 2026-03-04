@@ -172,11 +172,27 @@ MOMENTUM: 60 % → Low effort</pre>
         const res = await fetch('http://127.0.0.1:8000/analyze', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code, level: levelSelect.value })
+          body: JSON.stringify({ code })
         });
         if (!res.ok) throw new Error('Analysis failed');
-        const text = await res.text();
-        report.textContent = text;
+        const data = await res.json();
+        const lines = [];
+        lines.push('LANGUAGE: ' + (data.language || ''));
+        lines.push('');
+        lines.push('WARNINGS:');
+        (data.warnings || []).forEach(w => lines.push('- ' + w));
+        lines.push('');
+        lines.push('SUGGESTIONS:');
+        (data.suggestions || []).forEach(s => lines.push('- ' + s));
+        lines.push('');
+        lines.push('INCOMPLETE BLOCKS:');
+        (data.incomplete_blocks || []).forEach(b => lines.push('- ' + b));
+        lines.push('');
+        lines.push('RISK FLAGS:');
+        (data.risk_flags || []).forEach(r => lines.push('- ' + r));
+        lines.push('');
+        lines.push('CONFIDENCE: ' + Math.round(((data.confidence_score || 0) * 100)) + '%');
+        report.textContent = lines.join('\n');
       } catch (err) {
         report.textContent = 'Error: ' + err.message;
       } finally {

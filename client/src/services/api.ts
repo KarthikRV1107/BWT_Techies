@@ -10,7 +10,7 @@ export const api = axios.create({
 
 export interface AnalysisRequest {
   code: string
-  level: 'Beginner' | 'Intermediate' | 'Advanced'
+  cursor_position?: number
 }
 
 export interface Analysis {
