@@ -1,73 +1,229 @@
-# Welcome to your Lovable project
+# 🚀 DevResume AI  
+### Context Recovery Engine for Developers  
 
-## Project info
+> You didn’t lose your skill. You lost your context.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 📌 Theme
+**AI Super Productivity – Focus & Flow**
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🧠 Problem Statement
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Developers frequently switch between tasks, meetings, debugging sessions, and multiple repositories.  
+When returning to unfinished code, they often spend 20–40 minutes rebuilding mental context:
 
-Changes made via Lovable will be committed automatically to this repo.
+- What was I building?
+- What is incomplete?
+- What logic is missing?
+- What should I do next?
 
-**Use your preferred IDE**
+This context-switching overhead significantly reduces productivity and development velocity.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 💡 Solution Overview
 
-Follow these steps:
+**DevResume AI** is an AI-powered context recovery system that analyzes source code and instantly reconstructs:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- The original development goal
+- Current implementation state
+- Incomplete logic
+- Risks and improvements
+- Prioritized next steps
+- Momentum Score (completion percentage)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Instead of re-reading entire files, developers receive a structured recovery report in seconds.
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## ✨ Key Features
 
-**Edit a file directly in GitHub**
+### 🧭 Goal Detection
+Infers the developer’s original objective from code structure and patterns.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 🧩 Incomplete Logic Identification
+Detects:
+- TODO comments  
+- `pass` statements  
+- Missing return statements  
+- Unhandled exceptions  
+- Partial implementations  
 
-**Use GitHub Codespaces**
+### 📊 Momentum Score
+Calculates:
+- Completion percentage  
+- Effort required to continue (Low / Medium / High)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### ⚠️ Risk Radar
+Highlights:
+- Security gaps  
+- Missing validations  
+- Weak error handling  
+- Architectural inconsistencies  
 
-## What technologies are used for this project?
+### 🎯 Next-Step Recommendations
+Generates three prioritized, actionable tasks to resume development efficiently.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
+## 🏗 Architecture Overview
+
+
+User (Browser)
+↓
+Frontend (React / HTML / CSS / JS)
+↓
+FastAPI Backend
+↓
+LLM Processing Engine
+↓
+Structured JSON Context Report
+↓
+Frontend Visualization
+
+
+Architecture diagram available at:
+
+
+/docs/architecture.png
+
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - React
-- shadcn-ui
 - Tailwind CSS
+- Framer Motion
 
-## How can I deploy this project?
+### Backend
+- FastAPI
+- Python
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### AI Engine
+- Large Language Model (LLM API)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## ⚙️ Installation & Setup
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 1️⃣ Clone Repository
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```bash
+git clone https://github.com/your-username/BWT_teamName.git
+cd BWT_teamName
+2️⃣ Backend Setup
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+Backend runs at:
+
+http://localhost:8000
+3️⃣ Frontend Setup
+npm install
+npm run dev
+
+Frontend runs at:
+
+http://localhost:3000
+📡 API Endpoint
+POST /analyze
+
+Request:
+
+{
+  "code": "your source code here",
+  "level": "Beginner | Intermediate | Advanced"
+}
+
+Response:
+
+{
+  "goal": "...",
+  "current_state": "...",
+  "next_steps": ["...", "...", "..."],
+  "momentum_score": 45,
+  "effort": "Medium",
+  "risks": ["...", "..."]
+}
+🌍 Use Cases
+
+Returning to unfinished projects
+
+Hackathon recovery
+
+Large enterprise codebases
+
+Developer onboarding
+
+Code review assistance
+
+Refactoring planning
+
+🚀 Future Scope
+
+VS Code Extension Integration
+
+GitHub Repository Auto-Analysis
+
+Commit History Context Tracking
+
+Team Knowledge Memory System
+
+AI Code Review Mode
+
+Real-time Multi-language Error Detection
+
+👨‍💻 Team
+
+BWT_Techies
+
+Full Stack & AI
+
+Backend & DevOps
+
+Frontend & UX
+
+📈 Why It Matters
+
+Context switching is one of the biggest hidden productivity killers in software development.
+
+DevResume AI reduces:
+
+Cognitive reload time
+
+Re-analysis overhead
+
+Development friction
+
+And increases:
+
+Focus continuity
+
+Development speed
+
+Code awareness
+
+📄 License
+
+MIT License
+
+⭐ Tagline
+
+Ship faster. Resume smarter.
+
+
+---
+
+If you want, I can also give you:
+
+- 🔥 A more advanced “enterprise-grade” README (for clients)
+- 📊 A README with badges (build, version, license)
+- 🎯 A minimal hackathon version
+- 🧠 A technical deep-dive version for GitHub impress factor
+
+Tell me which one you need.
